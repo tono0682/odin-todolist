@@ -136,7 +136,9 @@ const UIHandler = (() => {
                 // Save updated projects data to local storage
                 LocalStorage.saveData('projects', ProjectManagement.getAllProjects());
             } else if(projects.length > 1) {
-                
+                // Add to General Project folder
+                const generalProject = ProjectManagement.getAllProjects().find(project => project.title === 'General');
+                ProjectManagement.addTaskToProject(generalProject, task);
             }else {
                 // Handle the case where there are no projects yet
                 alert("No projects available. Create a project first.");
