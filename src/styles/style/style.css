@@ -1,0 +1,233 @@
+:root {
+    --primary-dark: #111827;
+    --secondary-dark: #1f2937;
+    --primary-light: #e5e7eb;
+    --secondary-light: #d1d5db;
+    --accent: #0f766e;
+    --accent-hover: #1a716a;
+    --accent-on: #ffffff;
+}
+  
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    display: grid;
+    grid-template: auto 1fr auto / auto 1fr ;
+    height: 100vh;
+}
+
+header,
+nav,
+main,
+footer {
+    padding: 1em;
+}
+
+header { 
+    grid-column: 1 / -1;
+    background-color: var(--primary-dark);
+    color: var(--primary-light);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+nav {
+    grid-row: 2 / 3 ;
+    grid-column: 1 / 2;
+    background-color: var(--secondary-dark);
+    color: var(--secondary-light);
+    width: auto;
+    min-width: 300px;
+    max-width: 400px;
+}
+
+#nav-tasks, 
+#nav-projects,
+#projects-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.nav-btn {
+    width: 100%;
+    padding: 1em;
+    border-radius: 10px;
+    border: none;
+    background-color: transparent;
+
+    font-size: 1em;
+    color: var(--primary-);
+
+    display: flex;
+    justify-content: flex-start;
+    gap: 1em;
+}
+
+nav .text-input {
+    padding: 1em;
+    width: 100%;
+}
+
+[data-visible=false] {
+    display: none;
+}
+
+.nav-btn.active,
+.nav-btn:hover
+{
+    background-color: rgba(255, 255, 255, 0.105);
+    cursor: pointer;
+}
+
+
+
+
+main {
+    grid-row: 2 / -1;
+    grid-column: 2 / -1;
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+    min-width: 1100px;
+}
+
+#add-task-btn {
+    margin: 1em 0;
+    padding: 5px;
+    width: 100px;
+    border-radius: 20px;
+    border-color: transparent;
+    background-color: var(--accent);
+    color: var(--accent-on);
+}
+
+#add-task-btn:hover {
+    background-color: var(--accent-hover);
+}
+
+#gallery-header-container,
+.task-container {
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 3fr 3fr 5fr 2fr 1fr 0.5fr 0.5fr;
+    border-bottom: 1px solid var(--primary-dark);
+}
+
+#gallery-header-container :last-child {
+    text-align: center;
+}
+
+.task-container i {
+    cursor: pointer;
+    transition: 250ms;
+    padding: 0 10px;
+}
+
+.task-container i:hover{
+    transform: scale(1.1)
+}
+
+footer {
+    grid-row: 3 / 4;
+    grid-column: 1 / -1;
+    background-color: var(--primary-dark);
+    color: var(--primary-light);
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+/* Modal */
+/* The Modal (background) */
+/* The Modal Container */
+.editModal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    overflow: auto; /* Enable scroll if needed */
+}
+
+/* ------- Modal Content ------ */
+.editModal-content {
+    background-color: #fff;
+    margin: 10% auto; /* Center it on the screen */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 70%; /* Adjust the width as needed */
+    max-width: 600px; 
+    box-shadow: 0px 0px 15px 0px #000;
+    border-radius: 5px;
+}
+
+/* Close Button */
+.close {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Close Button Hover Effect */
+.close:hover {
+    color: red;
+}
+
+/* Form Styling */
+.editModal-content form {
+    display: grid;
+    gap: 10px;
+}
+
+/* Form Inputs */
+.editModal-content label {
+    font-weight: bold;
+}
+
+.editModal-contenti input[type="text"],
+.editModal-content input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.editModal-content textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical; /* Allow vertical resizing */
+}
+
+/* Submit Button */
+.editModal-content .btn {
+    background-color: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Submit Button Hover Effect */
+.editModal-content .btn:hover {
+    background-color: var(--accent-hover);
+}
+/* ------- Modal Content (end) ------ */
